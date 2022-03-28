@@ -1,15 +1,15 @@
-import throttle from "lodash.throttle";
+import throttle from 'lodash.throttle';
 
-const LOCAL_KEY_EMAIL = "feedback-mail";
-const LOCAL_KEY_MESSAGE = "feedback-sms";
+const LOCAL_KEY_EMAIL = 'feedback-mail';
+const LOCAL_KEY_MESSAGE = 'feedback-sms';
 // const formData = {};
 const refs = {
-  form: document.querySelector(".feedback-form"),
-  input: document.querySelector(".feedback-form input"),
-  textarea: document.querySelector(".feedback-form textarea"),
+  form: document.querySelector('.feedback-form'),
+  input: document.querySelector('.feedback-form input'),
+  textarea: document.querySelector('.feedback-form textarea'),
 };
 ///
-refs.form.addEventListener("submit", onFormSubmit);
+refs.form.addEventListener('submit', onFormSubmit);
 
 ///
 // refs.form.addEventListener('input', e => {
@@ -19,8 +19,8 @@ refs.form.addEventListener("submit", onFormSubmit);
 // });
 ///
 ///
-refs.input.addEventListener("input", throttle(onEmailInput, 500)); //added library Lodesh
-refs.textarea.addEventListener("input", throttle(onTextareaInput, 500)); //added library Lodesh
+refs.input.addEventListener('input', throttle(onEmailInput, 500)); //added library Lodesh
+refs.textarea.addEventListener('input', throttle(onTextareaInput, 500)); //added library Lodesh
 //
 populateTextarea();
 populateEmail();
