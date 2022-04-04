@@ -13,9 +13,11 @@ const refs = {
 const onInput = e => {
   if (e.target.name == refs.email.name) {
     data.email = e.target.value;
+    console.log(e.target.value);
   }
   if (e.target.name == refs.message.name) {
     data.message = e.target.value;
+    console.log(e.target.value);
   }
   const inputJson = JSON.stringify(data);
   localStorage.setItem(STORAGE_KEY, inputJson);
@@ -24,6 +26,8 @@ const onInput = e => {
 const onFormSubmit = e => {
   e.preventDefault();
   e.currentTarget.reset();
+  console.log(localStorage.getItem(STORAGE_KEY));
+
   localStorage.removeItem(STORAGE_KEY);
 };
 
@@ -31,8 +35,12 @@ function populateMessageOutput() {
   const savedMsg = localStorage.getItem(STORAGE_KEY);
   const newData = JSON.parse(savedMsg);
   if (savedMsg) {
-    refs.email.value = newData.email;
-    refs.message.value = newData.message;
+    if (newData.email) {
+      refs.email.value = newData.email;
+    }
+    if (newData.message) {
+      refs.message.value = newData.message;
+    }
   }
 }
 refs.form.addEventListener('submit', onFormSubmit);
